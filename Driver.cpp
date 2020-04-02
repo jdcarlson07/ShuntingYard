@@ -12,7 +12,8 @@ int main()
     cin >> delims;
 
     Split* split = new Split();
-    split->split(expression, delims);
+    Queue* qOfStrings = split->split(expression, delims);
+    qOfStrings->display();
     
     return 0;
 }

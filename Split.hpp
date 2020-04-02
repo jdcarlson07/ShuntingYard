@@ -1,6 +1,6 @@
 #include <string>
 #include <iostream>
-#include "LinkedList.hpp"
+#include "Queue.hpp"
 using namespace std;
 
 class Split
@@ -9,7 +9,6 @@ class Split
 
     public:
     
-    LinkedList* listOfStrings = new LinkedList();
-    void split(string a, string b);
+    Queue* split(string a, string b);
 
 }; 

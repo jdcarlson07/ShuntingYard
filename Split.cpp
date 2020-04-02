@@ -1,8 +1,9 @@
 //yo
 #include "Split.hpp"
 
-void Split::split(string a, string b)
+Queue* Split::split(string a, string b)
 {
+    Queue* qOfStrings = new Queue();
     int signal = 0;
     string stringToSplit = a;
     string delims = b;
@@ -27,11 +28,11 @@ void Split::split(string a, string b)
                 signal = 0;
                 if(temp2 != "")
                 {
-                    this->listOfStrings->addEnd(temp2);
+                    qOfStrings->addEnd(temp2);
                     
                 }
                 temp = stringAti;
-                this->listOfStrings->addEnd(temp);
+                qOfStrings->addEnd(temp);
                 
                 temp = "";
                 temp2 = "";
@@ -45,9 +46,9 @@ void Split::split(string a, string b)
     } 
     if(temp2 != "")
     {
-        this->listOfStrings->addEnd(temp2);
+        qOfStrings->addEnd(temp2);
     }
-    this->listOfStrings->display();
+    return qOfStrings;
 }
 
 

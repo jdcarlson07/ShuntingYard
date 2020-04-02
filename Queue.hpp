@@ -1,15 +1,14 @@
 #include "Node.hpp"
 
-class LinkedList
+class Queue
 {
     private:
         Node* head;
         int count;
 
     public:
-        LinkedList();
+        Queue();
         void addEnd(string payload);
-        string* toStringArray();
-        string get(int index);
+        string getFront();
         void display();
 };
