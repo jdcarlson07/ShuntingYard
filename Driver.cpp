@@ -1,7 +1,7 @@
 #include <string>
 #include <iostream>
 using namespace std;
-#include "Split.hpp"
+#include "ShuntingYard.hpp"
 
 
 int main()
@@ -11,9 +11,21 @@ int main()
     cin >> expression;
     cin >> delims;
 
-    Split* split = new Split();
-    Queue* qOfStrings = split->split(expression, delims);
-    qOfStrings->display();
+    ShuntingYard* shuntyard = new ShuntingYard();
+    Queue* inputQ = shuntyard->split(expression, delims);
+    cout << std::to_string(inputQ->count);
+    cout << "\n";
+    cout << "\n";
+    inputQ->display();
+    cout << "\n";
+    cout << inputQ->peek();
+    cout << "\n";
+    cout << "\n";
+    Queue* outputQ = shuntyard->outputQ(inputQ);
+    outputQ->display();
+    cout << "\n";
+    cout << outputQ->peek();
+    cout << "\n";
     
     return 0;
 }

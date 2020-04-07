@@ -2,13 +2,14 @@
 
 class Queue
 {
-    private:
-        Node* head;
-        int count;
 
     public:
+        Node* head;
+        int count;
+        Node* tail;
         Queue();
         void addEnd(string payload);
         string getFront();
         void display();
+        string peek();
 };

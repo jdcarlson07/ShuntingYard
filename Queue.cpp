@@ -3,63 +3,58 @@
 Queue::Queue()
 {
     this->head = 0;
-    this->count = -1;
+    this->count = 0;
+    this->tail = 0;
 }
 
 
 void Queue::display()
 {
     Node* currNode = this->head;
-    for(int i = 0; i < this->count; i++)
+    while(currNode)
     {
-        cout << currNode->getPayload() << "\n";
+        cout << currNode->getPayload() << " ";
         currNode = currNode->getNextNode();
     }
-    cout << currNode->getPayload() << "\n";
+    cout << "\n";
 }
 
 string Queue::getFront()
 {
-    if(this->head != 0)
+    if(this->head)
     {
-        Node* currNode = this->head;
-        if(!currNode->getNextNode())
-        {
-            string package = currNode->getPayload();
-            delete currNode;
-            return package;
-        }
-        else
-        {
-            Node* newHead = currNode->getNextNode();
-            this->head = newHead;
-            string package1 = currNode->getPayload();
-            delete currNode;
-            return package1;
-        }
+        Node* temp = this->head;
+        this->head = this->head->getNextNode();
+        string package = temp->getPayload();
+        delete temp;
+        this->count--;
+        return package;
     }
     else
     {
-        return "No front yet";
+        return "No front yet"; //will never happen
     }
 }
 
 void Queue::addEnd(string payload)
 {
     Node* n = new Node(payload);
-    if(!this->head)
+    if(this->tail)
     {
-        this->head = n;
+        this->tail->setNextNode(n);
+        this->tail = n;
+        
     }
     else
     {
-        //run to the end of the list
-        Node* currNode = this->head;
-        while(currNode->getNextNode())
-        {
-            currNode = currNode->getNextNode();
-        }
-        currNode->setNextNode(n);
+        this->head = n;
+        this->tail = n;
     }
     this->count++;
+}
+
+string Queue::peek()
+{
+    string package = this->head->getPayload();
+    return package;
 }
